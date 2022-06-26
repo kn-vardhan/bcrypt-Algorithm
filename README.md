@@ -2,7 +2,7 @@
  
 bcrypt is a password hashing algorithm based on Blowfish Block Cipher. The bcrypt function is the default password hash algorithm for [OpenBSD](https://en.wikipedia.org/wiki/OpenBSD) and default in some of the Linux distributions.
 
-Here is a naive implementation of bcrypt hashing algorithm. bcrypt using an expensive key schedule rather than a usual key used in Blowfish encryptions. Theoritically, the expensive key has same security as a usual key but since the process is arbitrarily slow, it's helps deter brute-force attacks and rainbow-table attacks.
+Here is an implementation of bcrypt hashing algorithm. bcrypt using an expensive key schedule rather than a usual key used in Blowfish encryptions. Theoritically, the expensive key has same security as a usual key but since the process is arbitrarily slow, it's helps deter brute-force attacks and rainbow-table attacks.
 
 The database used above stores the usernames and the hashed password (not plain-text) along with the random salt values. You can play around with different usernames and passwords and check the hashed passwords for the secureness. 
 
