@@ -17,6 +17,8 @@ Requirements - Python 3.8+, install DB Browser for SQLite <br>
 Open your terminal or Commnad Prompt and run, <b> python3 LoginPortal.py </b> <br>
 And follow the instructions as said by the program
 
+By default, the cost value is set to $3$, i.e., $2^3=8$ rounds of key setups
+
 > To view your hashed password, open the <b> user-database.db </b> file. 
 
 #### NOTE: The passwords are never saved and only the hashed version of the password will be stored in the Database <br> This is a one-way function. The passwords can be converted to hashed password but not vice-versa
