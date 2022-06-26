@@ -14,3 +14,4 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS Users (username TEXT UNIQUE, hash T
 if __name__ == '__main__':
     cursor.close()
     connection.close()
+
