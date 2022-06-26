@@ -25,6 +25,7 @@ if sign == '0':
     db.cursor.execute('SELECT * from Users WHERE username=?', (name,))
     row_data = db.cursor.fetchall()
     name_flag = RandomPassword.UserVerifier(name)
+
     while row_data or not name_flag:
         if row_data:
             print("ERROR: Username already exists...Try another one")
@@ -43,6 +44,7 @@ if sign == '0':
     if password is None:
         password = input("Create Password: ")
         flag = RandomPassword.Verifier(password)
+
         while not flag:
             print(
                 "Password should contain at-least 1 UpperCase Letter, 1 LowerCase Letter, 1 Digit, 1 Special Character")
@@ -50,8 +52,17 @@ if sign == '0':
             password = input("Create Password: ")
             flag = RandomPassword.Verifier(password)
         confirm = input("Confirm Password: ")
+
         while confirm != password:
             print("ERROR: The two passwords don't match")
+            password = input("Create Password: ")
+            flag = RandomPassword.Verifier(password)
+            while not flag:
+                print(
+                    "Password should contain at-least 1 UpperCase Letter, 1 LowerCase Letter, 1 Digit, 1 Special Character")
+                print("Minimum length of the password should be 8 and maximum 32")
+                password = input("Create Password: ")
+                flag = RandomPassword.Verifier(password)
             confirm = input("Confirm Password: ")
 
     else:
@@ -65,7 +76,7 @@ if sign == '0':
 
     db.cursor.execute('INSERT INTO Users (username, hash, salt) VALUES (?, ?, ?)', (name, hashed, str(Salt)))
     db.connection.commit()
-    print("User created Successfully!")
+    print("\nUser created Successfully!")
 
 elif sign == '1':
     print("You are currently in the Log In Portal")
@@ -74,7 +85,7 @@ elif sign == '1':
     db.cursor.execute('SELECT * from Users WHERE username=?', (name,))
     row_data = db.cursor.fetchall()
     while not row_data:
-        print("ERROR: Username doesn't exists...Try Again")
+        print("ERROR: Username doesn't exist...Try Again")
         name = input("Enter Username: ")
         db.cursor.execute('SELECT * from Users WHERE username=?', (name,))
         row_data = db.cursor.fetchall()
@@ -85,8 +96,10 @@ elif sign == '1':
     
     if hash != hashed:
         print("Incorrect Password...Terminating Program")
+        db.cursor.close()
+        db.connection.close()
         exit()
-        
+
     print("Login Successful!\n")
 
     print("Enter 1 to Change Username")
@@ -98,21 +111,39 @@ elif sign == '1':
         print("Invalid key...Try Again")
         _sign = input("Enter key to perform action: ")
 
-    
     if _sign == '1':
         print("You are current in the Change Username Portal")
         
-        new_name = input("New Username: ")
+        new_name = input("Create New Username: ")
+        new_name_flag = RandomPassword.UserVerifier(new_name)
+
+        while not new_name_flag:
+            print("ERROR: Username cannot have white spaces...Try another one")
+            new_name = input("Create New Username: ")
+            new_name_flag = RandomPassword.UserVerifier(new_name)
         db.cursor.execute('SELECT * from Users WHERE username=?', (new_name,))
         row_data = db.cursor.fetchall()
+
         while row_data:
             print("ERROR: Username already exists...Try another one")
-            new_name = input("Create Username: ")
+            new_name = input("Create New Username: ")
+            new_name_flag = RandomPassword.UserVerifier(new_name)
+            while not new_name_flag:
+                print("ERROR: Username cannot have white spaces...Try another one")
+                new_name = input("Create New Username: ")
+                new_name_flag = RandomPassword.UserVerifier(new_name)
             db.cursor.execute('SELECT * from Users WHERE username=?', (new_name,))
             row_data = db.cursor.fetchall()
         confirm_name = input("Confirm New Username: ")
+
         while confirm_name != new_name:
             print("ERROR: The two usernames don't match")
+            new_name = input("Create New Username: ")
+            new_name_flag = RandomPassword.UserVerifier(new_name)
+            while not new_name_flag:
+                print("ERROR: Username cannot have white spaces...Try another one")
+                new_name = input("Create New Username: ")
+                new_name_flag = RandomPassword.UserVerifier(new_name)
             confirm_name = input("Confirm New Username: ")
         
         db.cursor.execute('UPDATE Users SET username=? WHERE username=?', (new_name, name))
