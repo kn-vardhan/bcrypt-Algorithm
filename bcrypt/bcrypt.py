@@ -41,9 +41,8 @@ def convert_pwd(password):
     return PASS, L
 
 
-# the ExpandKey function runs through
 # encrypts a block using usual Blowfish technique and changes the state continuously
-# XORs the block and state values with the salt, while splitting the salt into 32 bits array
+# XORs the block and state values with the salt, while splitting the salt into 32 bit arrays
 def expand_key(password, salt, P_array, S_box):
 
     PASS, L = convert_pwd(password)
@@ -113,7 +112,7 @@ def EksBlowfish(password, salt, cost):
     return new_P_array, new_S_box, password, salt, cost
     
 
-# finally, the password hashed using all the last returned subkeys
+# the password is hashed using the last returned state
 # the hashed password in bcrypt have a certain format
 # hash = $2<a/b/x/y>$[cost]$[22 character salt][31 character hash]
 def hash_pwd(password, salt, cost):

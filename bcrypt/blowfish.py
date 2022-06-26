@@ -45,8 +45,8 @@ def split_key(key):
     return keys, len(keys)
 
 
-# the F-Function splits input into 4 8-bit quarters
-# and performs XOR, ADD operations
+# the Fiestel Network splits input into 4 8-bit quarters
+# performs XOR and ADD operations through the S1, S2, S3, S4 boxes
 def function(L, S_box):
     
     string = ''

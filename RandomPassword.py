@@ -32,13 +32,12 @@ def Verifier(password):
             count += 1
             break
     if 8 <= len(password) <= 32:
-        count += 1
-        
+        count += 1 
     return count == 5
     
 
 # the username cannot have white spaces in it
-# returns a boolean for a valid username
+# returns a boolean value for a valid username
 def UserVerifier(user):
     
     flag = True
@@ -72,7 +71,7 @@ def AskUser():
 
 
 # generates a strong random password with upper, lower, digit and special characters
-# takes input of the password length from the user
+# takes input from user which is the desired length of the password
 def generate(size):
 
     pass_len = int(size)
