@@ -1,7 +1,7 @@
 import random
 import secrets
 import sys
-from data import *
+from .data import *
 
 
 # generate a key of random bit length between 32 and 448 bits

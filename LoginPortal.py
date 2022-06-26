@@ -1,4 +1,4 @@
-import bcrypt
+import bcrypt.bcrypt as bcrypt
 import database as db
 import RandomPassword
 import warnings

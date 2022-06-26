@@ -1,7 +1,7 @@
 import secrets
 import sys
-import blowfish
-import data
+from . import blowfish
+from . import data
 
 # the cost value used for iterating and making strong hashing
 # cost = log2(Iterations)
