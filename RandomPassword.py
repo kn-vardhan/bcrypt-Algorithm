@@ -32,8 +32,7 @@ def Verifier(password):
             count += 1
             break
     if 8 <= len(password) <= 32:
-        count += 1
-        
+        count += 1 
     return count == 5
     
 
