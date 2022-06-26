@@ -2,6 +2,7 @@
 __pycache__/
 .gitattributes
 .DS_Store
+user-database.db
 *.py[cod]
 *$py.class
 # C extensions
