@@ -6,7 +6,7 @@ Here is a naive implementation of bcrypt hashing algorithm. bcrypt using an expe
 
 The database used above stores the usernames and the hashed password (not plain-text) along with the random salt values. You can play around with different usernames and passwords and check the hashed passwords for the secureness. 
 
-The usual bcrypt hashed password looks as <b>E.g.</b> `$2<a/b/x/y>$[cost]$[22 character salt][31 character hash]`<br>
+The usual bcrypt hashed password looks as <br><b>E.g.</b> `$2<a/b/x/y>$[cost]$[22 character salt][31 character hash]`<br>
 Where
 - `$2<.>$`: The hash algorithm identifier (bcrypt)
 - `cost`: Input cost (if cost = 10 $\Rightarrow$ $2^{10} = 1024$ rounds of key setups)
