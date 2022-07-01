@@ -1,3 +1,4 @@
+import base64
 import secrets
 import sys
 from . import blowfish
@@ -129,6 +130,7 @@ def hash_pwd(password, salt, cost):
     for i in range(len(PASS)):
         ctext = blowfish.encrypt(ctext, P_array, S_box)
     
+    '''
     start = 0
     salt = str(salt)
     i = 2
@@ -160,6 +162,20 @@ def hash_pwd(password, salt, cost):
             hash += ctext[start:i]
             start = i - 1
             i += 1
+    '''
+
+    salt = str(salt)
+    salt_bytes = salt.encode("ascii")
+    salt_base64_bytes = base64.b64encode(salt_bytes)
+    salt_base64_string = salt_base64_bytes.decode("ascii")
+
+    ctext = str(ctext)
+    ctext_bytes = ctext.encode("ascii")
+    ctext_base64_bytes = base64.b64encode(ctext_bytes)
+    ctext_base64_string = ctext_base64_bytes.decode("ascii")
+    
+    hash += salt_base64_string
+    hash += ctext_base64_string
     
     return hash
 
