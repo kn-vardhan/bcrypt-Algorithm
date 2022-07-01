@@ -67,7 +67,7 @@ def function(L, S_box):
     return to_R
 
 
-# data encryption occurs via 16 round feistel network
+# data encryption occurs via 16 round feistel network, F-function
 def encrypt(message, P_array, S_box):
     if message.bit_length() > 64:
         print(message.bit_length())
