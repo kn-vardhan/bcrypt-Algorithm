@@ -1,4 +1,4 @@
-# Secure Password Hashing
+# bcrypt Hashing Algorithm
  
 bcrypt is a password hashing algorithm based on Blowfish Block Cipher. The bcrypt function is the default password hash algorithm for [OpenBSD](https://en.wikipedia.org/wiki/OpenBSD) and default in some of the Linux distributions.
 
